@@ -56,5 +56,6 @@ Rails.application.routes.draw do
   #   end
     root :to => "articles#index"
     resources :articles
+    resources :comments
     
 end

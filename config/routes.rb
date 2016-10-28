@@ -57,5 +57,8 @@ Rails.application.routes.draw do
     root :to => "articles#index"
     resources :articles
     resources :comments
+    get "sign_up" => "users#new", :as => "sign_up"
+    resources :users
+    resources :sessions
     
 end

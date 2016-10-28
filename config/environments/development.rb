@@ -38,4 +38,43 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+    
+  #config mailer with port 465
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 465,
+    :domain => "gmail.com",
+    :user_name => "develror",
+    :password => "123456^&*()",
+    :authentication => "login",
+    :ssl => true,
+    :tls => true,
+    :enable_starttls_auto => true
+  }
+  
+  #config mailer with port 587
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => '@gmail.com',
+    :user_name => 'develror',
+    :password => '12345^&*()',
+    :authentication => 'plain',
+    :enable_starttls_auto => true
+ }
+    
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :user_name => 'f33e0747a86dc9',
+  :password => 'e7646498421db7',
+  :address => 'mailtrap.io',
+  :domain => 'mailtrap.io',
+  :port => '2525',
+  :authentication => :cram_md5
+}
+    
 end

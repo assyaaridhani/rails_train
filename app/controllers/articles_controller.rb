@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  
+  before_action :check_current_user, only: [:new, :create, :edit, :update, :destroy]
+    
   def index
       @articles = Article.status_active
   end

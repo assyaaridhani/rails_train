@@ -1,3 +1,4 @@
+
 <h4>
     <% if !current_user %>
         <%= link_to 'Log-in', new_session_path %>
@@ -6,6 +7,32 @@
         <%= link_to 'Log-out', session_path(current_user.id), method: "DELETE" %>
     <% end %>
 </h4>
+
+<p>Search <input type="text" id="search" placeholder="Search by content or title"/></p>
+<table>
+    <thead>
+        <tr>
+            <th> Title </th>
+            <th> Content </th>
+        </tr>
+    </thead>
+    <tbody >
+            <%= render @articles %>
+    </tbody>
+</table>
+
+        <div>
+            <div id="articles">
+                <%= render @articles %>
+            </div>
+             <div class="paginate">
+                <%= paginate @articles %>
+            </div>   
+        </div>    
+        
+
+
+<%= javascript_include_tag'custom' %>
 
 <% @articles.each do |article| %>
 
@@ -34,7 +61,5 @@
 </p>
 
 <hr/>
-
-
-
 <% end %>
+

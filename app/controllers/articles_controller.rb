@@ -1,10 +1,6 @@
 class ArticlesController < ApplicationController
   
   before_action :check_current_user, only: [:new, :create, :edit, :update, :destroy]
-    
-  def index
-      @articles = Article.status_active
-  end
 
   def new
       @article = Article.new
@@ -55,8 +51,20 @@ class ArticlesController < ApplicationController
     end
   end
 
+ def index
+    respond_to do |format|
+        @articles = Article.where("title like ? or content like ?", "%#{params[:search]}%", "%#{params[:search]}%").order("#{params[:column]} #{params[:direction]}").page(params[:page]).per(5)
+        format.html {
+            }
+        format.js {
+            }
+    end
+ end
+     
+     
 private 
     def params_article
         params.require(:article).permit(:title, :content, :status)
     end
+    
 end
